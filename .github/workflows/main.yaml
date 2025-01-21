@@ -31,7 +31,7 @@ jobs:
       run: echo "DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=1" >> $GITHUB_ENV
 
     - name: Change to project directory  # Add this step if your project is in a subdirectory
-      run: /app
+      run: cd /app
 
     - name: Restore dependencies
       run: dotnet restore
