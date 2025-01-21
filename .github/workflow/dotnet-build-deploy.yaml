@@ -46,21 +46,23 @@ jobs:
     - name: Push Docker image to Artifactory
       run: docker push ${{ secrets.ARTIFACTORY_URL }}/myapp:${{ github.sha }}
 
-    - name: Clone the deployment repository
+    - name: Clone the IAAC repository
       uses: actions/checkout@v2
       with:
-        repository: my-org/deployment-repo
-        token: ${{ secrets.DEPLOYMENT_REPO_TOKEN }}
-        path: deployment-repo
-
-    - name: Update image tag in deployment repository
+        repository: ushabapat/IAAC
+        token: ${{ secrets.IAAC_REPO_TOKEN }}
+        path: IAAC-repo
+    
+    - name: Update image tag in Helm chart values.yaml file
       run: |
-        cd deployment-repo
-        # Assuming you have a file like deployment.yaml with the image tag to replace
-        sed -i 's|image: myapp:.*|image: myapp:${{ github.sha }}|' deployment.yaml
+        # Navigate to the Helm chart directory where values.yaml is located
+        cd IAAC-repo/nging-chart
+        # Update the image tag in values.yaml
+        sed -i 's|tag: "stable"|tag: "${{ github.sha }}"|' values.yaml
         git config user.name "github-actions"
         git config user.email "github-actions@github.com"
-        git commit -am "Update image tag to ${{ github.sha }}"
+        git add values.yaml
+        git commit -m "Update image tag to ${{ github.sha }}"
         git push
 
     - name: Trigger Argo CD (optional)
