@@ -30,8 +30,10 @@ jobs:
     - name: Set DOTNET_SYSTEM_GLOBALIZATION_INVARIANT
       run: echo "DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=1" >> $GITHUB_ENV
 
-    - name: Create /app directory
-      run: sudo mkdir -p /app && sudo chown $USER:$USER /app
+    - name: Create /app directory and change ownership
+      run: |
+        mkdir -p /app
+        chown $USER:$USER /app
 
     - name: Change to /app directory
       run: cd /app
