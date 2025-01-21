@@ -36,13 +36,13 @@ jobs:
     #     chown $USER:$USER /App
 
     - name: Change to /app directory
-      run: cd /App
+      run: cd /home/runner/work/buildnaddeploy/buildnaddeploy/App
 
     - name: List contents of the App directory
-      run: ls -la App/
+      run: ls -la /home/runner/work/buildnaddeploy/buildnaddeploy/App/
 
     - name: Restore dependencies
-      run: dotnet restore App/DotNet.Docker.csproj
+      run: dotnet restore /home/runner/work/buildnaddeploy/buildnaddeploy/App/DotNet.Docker.csproj
 
     # - name: Build with SonarQube analysis
     #   env:
