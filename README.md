@@ -1,6 +1,7 @@
 # buildnaddeploy
+# Validate You'll need to add the following secrets to your repository settings:
 
-You'll need to add the following secrets to your repository settings:
+
 
 SONAR_TOKEN: The token for authenticating with SonarQube.
 SONAR_HOST_URL: The URL of your SonarQube server.
