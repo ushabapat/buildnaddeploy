@@ -30,7 +30,10 @@ jobs:
     - name: Set DOTNET_SYSTEM_GLOBALIZATION_INVARIANT
       run: echo "DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=1" >> $GITHUB_ENV
 
-    - name: Change to project directory  # Add this step if your project is in a subdirectory
+    - name: Create /app directory
+      run: sudo mkdir -p /app && sudo chown $USER:$USER /app
+
+    - name: Change to /app directory
       run: cd /app
 
     - name: Restore dependencies
