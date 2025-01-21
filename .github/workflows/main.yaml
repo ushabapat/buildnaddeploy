@@ -39,7 +39,7 @@ jobs:
       run: cd /app
 
     - name: Restore dependencies
-      run: dotnet restore
+      run: dotnet restore /App/DotNet.Docker.csproj
 
     - name: Build with SonarQube analysis
       env:
