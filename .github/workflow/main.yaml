@@ -3,7 +3,10 @@ name: .NET Build and Deploy
 on:
   push:
     branches:
-      - main  # Set this to the branch you want to trigger the deployment
+    - main
+  pull_request:
+    branches:
+    - main
 
 jobs:
   build-and-deploy:
