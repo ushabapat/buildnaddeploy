@@ -20,16 +20,16 @@ jobs:
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: '3.1'  # Set this to the .NET Core version you need
+         dotnet-version: '6.0.x' # Use the latest .NET 6 SDK
     - name: Install ICU Libraries
       run: |
         sudo apt-get update
         sudo apt-get install -y libicu-dev
         sudo apt-get install -y libssl-dev
-        sudo apt-get install -y apt-transport-https ca-certificates curl gnupg-agent software-properties-common
-        curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-        sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
-        sudo apt-get install -y docker-ce docker-ce-cli containerd.io
+        # sudo apt-get install -y apt-transport-https ca-certificates curl gnupg-agent software-properties-common
+        # curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+        # sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+        # sudo apt-get install -y docker-ce docker-ce-cli containerd.io
 
     - name: Set DOTNET_SYSTEM_GLOBALIZATION_INVARIANT
       run: echo "DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=1" >> $GITHUB_ENV
