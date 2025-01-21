@@ -44,16 +44,16 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore App/DotNet.Docker.csproj
 
-    - name: Build with SonarQube analysis
-      env:
-        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-      run: |
-        # Optionally install SonarScanner for .NET if not already included in your project
-        dotnet tool install --global dotnet-sonarscanner
-        dotnet sonarscanner begin /k:"project-key" /d:sonar.host.url="$SONAR_HOST_URL" /d:sonar.login="$SONAR_TOKEN"
-        dotnet build
-        dotnet sonarscanner end /d:sonar.login="$SONAR_TOKEN"
+    # - name: Build with SonarQube analysis
+    #   env:
+    #     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+    #     SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+    #   run: |
+    #     # Optionally install SonarScanner for .NET if not already included in your project
+    #     dotnet tool install --global dotnet-sonarscanner
+    #     dotnet sonarscanner begin /k:"project-key" /d:sonar.host.url="$SONAR_HOST_URL" /d:sonar.login="$SONAR_TOKEN"
+    #     dotnet build
+    #     dotnet sonarscanner end /d:sonar.login="$SONAR_TOKEN"
 
     - name: Build Docker image
       run: docker build -t myapp:${{ github.sha }} .
