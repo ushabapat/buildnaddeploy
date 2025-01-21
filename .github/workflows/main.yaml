@@ -90,11 +90,16 @@ jobs:
         cd nginx-chart
         # Update the image tag in values.yaml
         sed -i 's|tag: "stable"|tag: "${{ github.sha }}"|' values.yaml
-        git config user.name "github-actions"
-        git config user.email "github-actions@github.com"
-        git add values.yaml
-        git commit -m "Update image tag to ${{ github.sha }}"
-        git push
+        # Check if there are any changes
+        if ! git diff --exit-code; then
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add values.yaml
+          git commit -m "Update image tag to ${{ github.sha }}"
+          git push
+        else
+          echo "No changes to commit."
+        fi
 
     - name: Trigger Argo CD (optional)
       run: |
