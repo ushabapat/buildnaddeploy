@@ -66,7 +66,7 @@ jobs:
     - name: Trigger Argo CD (optional)
       run: |
         # You can trigger Argo CD using its CLI or API. This is an example using curl to call the Argo CD API.
-        curl -X POST ${{ secrets.ARGOCD_SERVER }}/api/v1/applications/myapp/sync \
+        curl -X POST ${{ secrets.ARGOCD_SERVER }}/api/v1/applications/nginx/sync \
           -H 'Authorization: Bearer ${{ secrets.ARGOCD_TOKEN }}' \
           -H 'Content-Type: application/json' \
           --data '{"revision": "${{ github.sha }}"}'
