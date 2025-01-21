@@ -62,16 +62,16 @@ jobs:
     - name: Build Docker image
       run: docker build -t myapp:${{ github.sha }} -f App/Dockerfile .
 
-    - name: Scan the Docker image with Trivy
-      run: |
-        docker save myapp:${{ github.sha }} -o image.tar
-        trivy image --input image.tar
+    # - name: Scan the Docker image with Trivy
+    #   run: |
+    #     docker save myapp:${{ github.sha }} -o image.tar
+    #     trivy image --input image.tar
 
-    - name: Log in to Artifactory
-      run: docker login -u ${{ secrets.ARTIFACTORY_USERNAME }} -p ${{ secrets.ARTIFACTORY_PASSWORD }} ${{ secrets.ARTIFACTORY_URL }}
+    # - name: Log in to Artifactory
+    #   run: docker login -u ${{ secrets.ARTIFACTORY_USERNAME }} -p ${{ secrets.ARTIFACTORY_PASSWORD }} ${{ secrets.ARTIFACTORY_URL }}
 
-    - name: Push Docker image to Artifactory
-      run: docker push ${{ secrets.ARTIFACTORY_URL }}/myapp:${{ github.sha }}
+    # - name: Push Docker image to Artifactory
+    #   run: docker push ${{ secrets.ARTIFACTORY_URL }}/myapp:${{ github.sha }}
 
     - name: Clone the IAAC repository
       uses: actions/checkout@v2
