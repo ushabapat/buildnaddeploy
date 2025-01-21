@@ -1,6 +1,5 @@
 # buildnaddeploy
-#Vlaidate
-You'll need to add the following secrets to your repository settings:
+# Validate You'll need to add the following secrets to your repository settings:
 
 
 
