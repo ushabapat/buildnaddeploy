@@ -4,7 +4,7 @@ WORKDIR /App
 # Copy everything
 COPY . ./
 # Restore as distinct layers
-RUN dotnet restore
+RUN dotnet App/DotNet.Docker.csproj
 # Build and publish a release
 RUN dotnet publish -o out
 
