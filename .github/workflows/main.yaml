@@ -32,14 +32,17 @@ jobs:
 
     - name: Create /app directory and change ownership
       run: |
-        mkdir -p /app
-        chown $USER:$USER /app
+        mkdir -p /App
+        chown $USER:$USER /App
 
     - name: Change to /app directory
-      run: cd /app
+      run: cd /App
+
+    - name: List contents of the App directory
+      run: ls -la App/
 
     - name: Restore dependencies
-      run: dotnet restore /App/DotNet.Docker.csproj
+      run: dotnet restore App/DotNet.Docker.csproj
 
     - name: Build with SonarQube analysis
       env:
