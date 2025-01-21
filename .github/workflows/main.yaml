@@ -87,7 +87,7 @@ jobs:
         # Navigate to the Helm chart directory where values.yaml is located
         cd /home/runner/work/buildnaddeploy/buildnaddeploy/IAAC-repo
         ls -la 
-        cd /IAAC/nging-chart
+        cd /nging-chart
         # Update the image tag in values.yaml
         sed -i 's|tag: "stable"|tag: "${{ github.sha }}"|' values.yaml
         git config user.name "github-actions"
