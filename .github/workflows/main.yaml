@@ -79,6 +79,7 @@ jobs:
         repository: ushabapat/IAAC
         token: ${{ secrets.IAAC_REPO_TOKEN }}
         path: IAAC-repo
+        ref: master
 
     
     - name: Update image tag in Helm chart values.yaml file
