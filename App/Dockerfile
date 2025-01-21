@@ -2,9 +2,9 @@ FROM mcr.microsoft.com/dotnet/sdk:9.0@sha256:3fcf6f1e809c0553f9feb222369f58749af
 WORKDIR /App
 
 # Copy everything
-COPY . ./
+COPY . .
 # Restore as distinct layers
-RUN dotnet restore /App/DotNet.Docker.csproj
+RUN dotnet restore DotNet.Docker.csproj
 # Build and publish a release
 RUN dotnet publish -o out
 
