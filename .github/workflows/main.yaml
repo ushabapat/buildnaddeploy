@@ -21,11 +21,11 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: '3.1'  # Set this to the .NET Core version you need
-    # - name: Install ICU Libraries
-    #   run: |
-    #     sudo apt-get update
-    #     sudo apt-get install -y libicu-dev
-    #     sudo apt-get install -y libssl-dev
+    - name: Install ICU Libraries
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y libicu-dev
+        sudo apt-get install -y libssl-dev
 
     - name: Set DOTNET_SYSTEM_GLOBALIZATION_INVARIANT
       run: echo "DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=1" >> $GITHUB_ENV
