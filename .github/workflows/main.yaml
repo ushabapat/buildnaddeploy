@@ -24,7 +24,7 @@ jobs:
       run: |
         sudo apt-get update
         sudo apt-get install -y libicu-dev
-        sudo apt-get install -y libssl1.1 libssl-dev
+        sudo apt-get install -y libssl-dev
 
     - name: Set DOTNET_SYSTEM_GLOBALIZATION_INVARIANT
       run: echo "DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=1" >> $GITHUB_ENV
